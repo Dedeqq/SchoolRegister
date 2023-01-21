@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">E-DZIENNIK</string>
+    <string name="login">Logowanie</string>
+    <string name="log_in">Zaolguj</string>
+    <string name="register">Register</string>
+    <string name="username">Wpisz login</string>
+    <string name="email">Email address</string>
+    <string name="password">Wpisz hasło</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="no_account">Don\'t have an account?</string>
+    <string name="have_account">Already have an account?</string>
+    <string name="chose_role">Wybierz rolę:</string>
+</resources>
