@@ -1,4 +1,5 @@
 <resources>
+    <string name="placeholderNameSurname">WITAJ IMIE NAZWISKO!</string>
     <string name="app_name">E-DZIENNIK</string>
     <string name="login">Logowanie</string>
     <string name="log_in">Zaolguj</string>

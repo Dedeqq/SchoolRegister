@@ -1,0 +1,160 @@
+CREATE TABLE IF NOT EXISTS `androiddb`.`roles` ( 
+`id` int(20) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`role` varchar(70) NOT NULL 
+);
+
+CREATE TABLE IF NOT EXISTS `androiddb`.`classes` ( 
+`id` int(20) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`class` varchar(70) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS `androiddb`.`subjects` ( 
+`id` int(20) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`subject` varchar(70) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS `androiddb`.`users` ( 
+`id` int(20) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`username` varchar(70) NOT NULL, 
+`password` varchar(40) NOT NULL, 
+`email` varchar(50) NOT NULL, 
+`created_at` datetime NOT NULL, 
+`updated_at` datetime DEFAULT NULL,
+`role_id` int(20) NOT NULL DEFAULT 1,
+FOREIGN KEY (role_id) REFERENCES roles(id) 
+);
+
+CREATE TABLE IF NOT EXISTS `androiddb`.`parents` ( 
+`id` int(20) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`firstname` varchar(70) NOT NULL, 
+`lastname` varchar(70) NOT NULL,
+`user_id` int(20) NOT NULL,
+FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS `androiddb`.`students` ( 
+`id` int(20) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`firstname` varchar(70) NOT NULL, 
+`lastname` varchar(70) NOT NULL,
+`user_id` int(20) NOT NULL,
+`class_id` int(20) NOT NULL,
+`parent_id` int(20) NOT NULL,
+FOREIGN KEY (user_id) REFERENCES users(id),
+FOREIGN KEY (class_id) REFERENCES classes(id),
+FOREIGN KEY (parent_id) REFERENCES parents(id)
+);
+
+CREATE TABLE IF NOT EXISTS `androiddb`.`teachers` ( 
+`id` int(20) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`firstname` varchar(70) NOT NULL, 
+`lastname` varchar(70) NOT NULL,
+`user_id` int(20) NOT NULL,
+FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS `androiddb`.`others` ( 
+`id` int(20) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`firstname` varchar(70) NOT NULL, 
+`lastname` varchar(70) NOT NULL,
+`user_id` int(20) NOT NULL,
+FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS `androiddb`.`schedule` ( 
+`id` int(20) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`teacher_id` int(20) NOT NULL, 
+`class_id` int(20) NOT NULL,
+`subject_id` int(20) NOT NULL,
+FOREIGN KEY (subject_id) REFERENCES subjects(id),
+FOREIGN KEY (teacher_id) REFERENCES teachers(id),
+FOREIGN KEY (class_id) REFERENCES classes(id)
+);
+
+
+CREATE TABLE IF NOT EXISTS `androiddb`.`grades` ( 
+`id` int(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+`grade` varchar(70) NOT NULL, 
+`grade_value` float(20) NOT NULL,
+`weight` float(20) NOT NULL,
+`student_id` int(20) NOT NULL, 
+`teacher_id` int(20) NOT NULL,
+`subject_id` int(20),
+`description` varchar(70) NOT NULL,
+FOREIGN KEY (student_id) REFERENCES students(id),
+FOREIGN KEY (teacher_id) REFERENCES teachers(id),
+FOREIGN KEY (subject_id) REFERENCES subjects(id)
+);
+
+INSERT INTO roles (role) VALUES ("UCZEŃ");
+INSERT INTO roles (role) VALUES ("NAUCZYCIEL");
+INSERT INTO roles (role) VALUES ("RODZIC");
+INSERT INTO roles (role) VALUES ("INNA");
+
+INSERT INTO classes (class) VALUES ("1A");
+INSERT INTO classes (class) VALUES ("1B");
+INSERT INTO classes (class) VALUES ("2A");
+INSERT INTO classes (class) VALUES ("2B");
+
+INSERT INTO subjects (subject) VALUES ("MATEMATYKA");
+INSERT INTO subjects (subject) VALUES ("JĘZYK POLSKI");
+INSERT INTO subjects (subject) VALUES ("JĘZYK ANGIELSKI");
+
+INSERT INTO users (username,password,email,created_at,updated_at,role_id) 
+       VALUES ("uczen1",MD5("uczen1"),"uczen1@uczen1.pl",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1);
+INSERT INTO users (username,password,email,created_at,updated_at,role_id) 
+       VALUES ("uczen2",MD5("uczen2"),"uczen2@uczen2.pl",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1);
+INSERT INTO users (username,password,email,created_at,updated_at,role_id) 
+       VALUES ("uczen3",MD5("uczen3"),"uczen3@uczen3.pl",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1);
+INSERT INTO users (username,password,email,created_at,updated_at,role_id) 
+       VALUES ("nauczyciel1",MD5("nauczyciel1"),"nauczyciel1@nauczyciel1.pl",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,2);
+INSERT INTO users (username,password,email,created_at,updated_at,role_id) 
+       VALUES ("nauczyciel2",MD5("nauczyciel2"),"nauczyciel2@nauczyciel2.pl",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,2);
+INSERT INTO users (username,password,email,created_at,updated_at,role_id) 
+       VALUES ("rodzic1",MD5("rodzic1"),"rodzic1@rodzic1.pl",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,3);
+INSERT INTO users (username,password,email,created_at,updated_at,role_id) 
+       VALUES ("rodzic2",MD5("rodzic2"),"rodzic2@rodzic2.pl",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,3);
+INSERT INTO users (username,password,email,created_at,updated_at,role_id) 
+       VALUES ("pracownik1",MD5("pracownik1"),"pracownik1@pracownik1.pl",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,4);
+
+INSERT INTO parents (firstname, lastname, user_id) VALUES ("RODZIC1_IMIE", "RODZIC1_NAZWISKO", 6);
+INSERT INTO parents (firstname, lastname, user_id) VALUES ("RODZIC2_IMIE", "RODZIC2_NAZWISKO", 7);
+
+INSERT INTO teachers (firstname, lastname, user_id) VALUES ("NAUCZYCIEL1_IMIE", "NAUCZYCIEL1_NAZWISKO", 4);
+INSERT INTO teachers (firstname, lastname, user_id) VALUES ("NAUCZYCIEL2_IMIE", "NAUCZYCIEL2_NAZWISKO", 5);
+
+INSERT INTO others (firstname, lastname, user_id) VALUES ("PRACOWNIK1_IMIE", "PRACOWNIK1_NAZWISKO", 8);
+
+INSERT INTO students (firstname, lastname, user_id, class_id, parent_id) 
+	VALUES ("UCZEN1_IMIE", "UCZEN1_NAZWISKO", 1, 1, 1);
+INSERT INTO students (firstname, lastname, user_id, class_id, parent_id) 
+	VALUES ("UCZEN2_IMIE", "UCZEN2_NAZWISKO", 2, 1, 2);
+INSERT INTO students (firstname, lastname, user_id, class_id, parent_id) 
+	VALUES ("UCZEN3_IMIE", "UCZEN3_NAZWISKO", 3, 3, 2);
+
+INSERT INTO schedule (teacher_id, class_id, subject_id) VALUES (1, 1, 1);
+INSERT INTO schedule (teacher_id, class_id, subject_id) VALUES (1, 1, 2);
+INSERT INTO schedule (teacher_id, class_id, subject_id) VALUES (2, 1, 3);
+
+INSERT INTO schedule (teacher_id, class_id, subject_id) VALUES (1, 3, 1);
+INSERT INTO schedule (teacher_id, class_id, subject_id) VALUES (1, 3, 2);
+INSERT INTO schedule (teacher_id, class_id, subject_id) VALUES (2, 3, 3);
+
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5", 5, 3, 1, 1, 1, "sprawdzian");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("4", 4, 2, 1, 1, 1, "kartkówka");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5-", 4.75, 1, 2, 1, 3, "aktywność");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("2", 2, 3, 2, 2, 2, "sprawdzian");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("4+", 4.5, 2, 2, 2, 2, "odpowiedź ustna");
+
+
+
+
+
+
+
+
+
