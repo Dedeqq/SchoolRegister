@@ -11,4 +11,11 @@
     <string name="no_account">Don\'t have an account?</string>
     <string name="have_account">Already have an account?</string>
     <string name="chose_role">Wybierz rolę:</string>
+    <string name="mathematics">MATEMATYKA</string>
+    <string name="polish">JĘZYK POLSKI</string>
+    <string name="english">JĘZYK ANGIELSKI</string>
+    <string name="grade">OCENA:</string>
+    <string name="weight">WAGA:</string>
+    <string name="description">OPIS:</string>
+    <string name="null_placeholder"> :</string>
 </resources>

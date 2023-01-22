@@ -1,5 +1,6 @@
 package com.example.schoolregister
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -14,5 +15,8 @@ class TeacherMainActivity : AppCompatActivity() {
         greetings.setText("WITAJ "+MainActivity.firstName+" "+MainActivity.lastName+"!")
     }
 
+    fun onClickB(v: View) {
+       startActivity(Intent(Intent(this, AddGradeActivity::class.java) ))
+    }
 
 }

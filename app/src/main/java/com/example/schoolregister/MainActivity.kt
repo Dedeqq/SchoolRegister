@@ -19,8 +19,13 @@ import org.json.JSONObject
 class MainActivity : AppCompatActivity() {
 
     companion object {
+        var gradesMathematics = ArrayList<Tuple>()
+        var gradesPolish = ArrayList<Tuple>()
+        var gradesEnglish = ArrayList<Tuple>()
         var firstName = ""
         var lastName = ""
+        var studentFirstName = ""
+        var studentLastName = ""
         var username = ""
         var password = ""
         var session = ""
@@ -156,4 +161,5 @@ class MainActivity : AppCompatActivity() {
         VolleySingleton.getInstance(this).addToRequestQueue(requestPOST)
         System.out.println("END SECRET FUNCTION")
     }
+
 }

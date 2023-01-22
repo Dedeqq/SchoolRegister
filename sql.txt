@@ -146,9 +146,45 @@ INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_
 INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
 	VALUES ("5-", 4.75, 1, 2, 1, 3, "aktywność");
 INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5", 5, 3, 1, 1, 1, "sprawdzian");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("4", 4, 2, 1, 1, 1, "kartkówka");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5-", 4.75, 1, 2, 1, 3, "aktywność");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5", 5, 3, 1, 1, 1, "sprawdzian");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("4", 4, 2, 1, 1, 1, "kartkówka");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5-", 4.75, 1, 2, 1, 3, "aktywność");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5", 5, 3, 1, 1, 2, "sprawdzian");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("4", 4, 2, 1, 1, 2, "kartkówka");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5-", 4.75, 1, 2, 2, 3, "aktywność");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5", 5, 3, 1, 1, 2, "sprawdzian");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("4", 4, 2, 1, 1, 2, "kartkówka");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5-", 4.75, 1, 2, 2, 3, "aktywność");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5", 5, 3, 1, 1, 2, "sprawdzian");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("4", 4, 2, 1, 1, 3, "kartkówka");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5-", 4.75, 1, 2, 2, 3, "aktywność");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5", 5, 3, 1, 1, 1, "sprawdzian");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("4", 4, 2, 1, 1, 1, "kartkówka");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
+	VALUES ("5-", 4.75, 1, 2, 2, 3, "aktywność");
+INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
 	VALUES ("2", 2, 3, 2, 2, 2, "sprawdzian");
 INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)	
-	VALUES ("4+", 4.5, 2, 2, 2, 2, "odpowiedź ustna");
+	VALUES ("4+", 4.5, 2, 2, 2, 2, "odpowiedź");
 
 
 
