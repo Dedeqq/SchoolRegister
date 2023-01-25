@@ -31,8 +31,23 @@ class StudentMainActivity : AppCompatActivity() {
         MainActivity.studentLastName = MainActivity.lastName
         getGradesInfo()
 
+    }
 
+    fun onClickLogout(v: View) {
+        MainActivity.gradesPolish.clear()
+        MainActivity.gradesEnglish.clear()
+        MainActivity.gradesMathematics.clear()
+        MainActivity.firstName = ""
+        MainActivity.lastName = ""
+        MainActivity.studentFirstName = ""
+        MainActivity.studentLastName = ""
+        MainActivity.username = ""
+        MainActivity.password = ""
+        MainActivity.session = ""
+        MainActivity.role = ""
+        MainActivity.loggedin = false
 
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     fun getGradesInfo(){

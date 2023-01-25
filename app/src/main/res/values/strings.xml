@@ -3,6 +3,8 @@
     <string name="app_name">E-DZIENNIK</string>
     <string name="login">Logowanie</string>
     <string name="log_in">Zaloguj</string>
+    <string name="log_out">Wyloguj</string>
+    <string name="go_back">Wróć</string>
     <string name="register">Register</string>
     <string name="username">Wpisz login</string>
     <string name="email">Email address</string>

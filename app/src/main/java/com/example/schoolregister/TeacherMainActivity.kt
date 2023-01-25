@@ -19,4 +19,21 @@ class TeacherMainActivity : AppCompatActivity() {
        startActivity(Intent(Intent(this, AddGradeActivity::class.java) ))
     }
 
+    fun onClickLogout(v: View) {
+        MainActivity.gradesPolish.clear()
+        MainActivity.gradesEnglish.clear()
+        MainActivity.gradesMathematics.clear()
+        MainActivity.firstName = ""
+        MainActivity.lastName = ""
+        MainActivity.studentFirstName = ""
+        MainActivity.studentLastName = ""
+        MainActivity.username = ""
+        MainActivity.password = ""
+        MainActivity.session = ""
+        MainActivity.role = ""
+        MainActivity.loggedin = false
+
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
 }

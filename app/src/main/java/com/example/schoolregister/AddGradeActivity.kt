@@ -124,8 +124,16 @@ class AddGradeActivity : AppCompatActivity(){
         System.out.println(chosenWeight)
         System.out.println(description)
         addGrade()
+    }
 
-
+    fun onClickBack(v: View) {
+        when (MainActivity.role) {
+            "Uczeń" -> intent = Intent(this, StudentMainActivity::class.java)
+            "Nauczyciel" -> intent = Intent(this, TeacherMainActivity::class.java)
+            "Rodzic" -> intent = Intent(this, ParentMainActivity::class.java)
+            "Inna" -> intent = Intent(this, OtherMainActivity::class.java)
+        }
+        startActivity(intent)
     }
 
     fun addGrade(){
