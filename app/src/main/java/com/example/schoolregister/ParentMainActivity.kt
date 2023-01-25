@@ -49,15 +49,12 @@ class ParentMainActivity : AppCompatActivity() {
             Response.Listener { response ->
                 // Process the json
                 try {
-                    System.out.println(query)
                     val jsonArray = JSONArray(response["message"].toString())
                     MainActivity.gradesPolish.clear()
                     MainActivity.gradesEnglish.clear()
                     MainActivity.gradesMathematics.clear()
                     for (i in 0 until jsonArray.length()) {
                         val jsonObject = jsonArray.getJSONObject(i)
-                        System.out.println(jsonObject["subject"])
-                        System.out.println(jsonObject["subject"]=="MATEMATYKA")
                         if (jsonObject["subject"].toString()=="MATEMATYKA"){
                             MainActivity.gradesMathematics.add(Tuple(jsonObject["grade"].toString(),jsonObject["weight"].toString(),jsonObject["description"].toString()))
                         }

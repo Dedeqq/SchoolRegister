@@ -116,13 +116,6 @@ class AddGradeActivity : AppCompatActivity(){
 
     fun onClickAdd(v: View){
         val description = findViewById<EditText>(R.id.descriptionText).text.toString()
-        System.out.println("DODANO OCENE")
-        System.out.println(chosenSubject)
-        System.out.println(chosenClass)
-        System.out.println(chosenStudent)
-        System.out.println(chosenGrade)
-        System.out.println(chosenWeight)
-        System.out.println(description)
         addGrade()
     }
 

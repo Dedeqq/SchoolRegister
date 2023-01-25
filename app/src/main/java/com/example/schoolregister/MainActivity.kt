@@ -59,11 +59,6 @@ class MainActivity : AppCompatActivity() {
 
         getPersonalInfo(user,password,url)
 
-        System.out.println("PRINTING FIRST NAME")
-        System.out.println(MainActivity.firstName)
-        System.out.println("PRINTING LAST NAME")
-        System.out.println(MainActivity.lastName)
-
         // Post parameters
         val jsonObject = JSONObject()
         jsonObject.put("username",user)
@@ -119,7 +114,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getPersonalInfo(user: String, password: String, url: String){
-        System.out.println("START SECRET FUNCTION")
         val query = "SELECT users.*, \n" +
                 "\tCOALESCE(parents.firstname, students.firstname, teachers.firstname, others.firstname) AS firstname,  \n" +
                 "    COALESCE(parents.lastname, students.lastname, teachers.lastname, others.lastname) AS lastname FROM users \n" +
@@ -142,8 +136,6 @@ class MainActivity : AppCompatActivity() {
                     val jsonObject = jsonArray.getJSONObject(0)
                     MainActivity.firstName = jsonObject["firstname"].toString()
                     MainActivity.lastName = jsonObject["lastname"].toString()
-                    System.out.println(MainActivity.firstName)
-                    System.out.println(MainActivity.lastName)
                     Log.d("fun secretFunction:","Response: $response")
                 }catch (e:Exception){
                     Log.d("fun secretFunction:","Exception: $e")
@@ -154,7 +146,6 @@ class MainActivity : AppCompatActivity() {
                 Log.d("fun secretFunction:","Volley error: $it")
             })
         VolleySingleton.getInstance(this).addToRequestQueue(requestPOST)
-        System.out.println("END SECRET FUNCTION")
     }
 
 }
