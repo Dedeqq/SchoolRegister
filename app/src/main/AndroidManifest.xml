@@ -12,6 +12,12 @@
         android:theme="@style/Theme.SchoolRegister">
 
         <activity
+            android:name=".ScheduleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestsActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddGradeActivity"
             android:exported="false" />
         <activity

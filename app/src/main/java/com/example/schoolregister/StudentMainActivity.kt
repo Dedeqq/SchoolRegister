@@ -33,6 +33,14 @@ class StudentMainActivity : AppCompatActivity() {
 
     }
 
+    fun onClickSchedule(v: View){
+        startActivity(Intent(this, ScheduleActivity::class.java))
+    }
+
+    fun onClickTests(v: View){
+        startActivity(Intent(this, TestsActivity::class.java))
+    }
+
     fun onClickLogout(v: View) {
         MainActivity.gradesPolish.clear()
         MainActivity.gradesEnglish.clear()
