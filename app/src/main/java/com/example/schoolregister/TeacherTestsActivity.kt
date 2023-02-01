@@ -1,9 +1,11 @@
 package com.example.schoolregister
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.example.schoolregister.TeacherTest
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.*
 
 val url = "http://10.0.2.2/androiddb/"
 
@@ -35,13 +38,35 @@ class TeacherTestsActivity : AppCompatActivity(),
         odswiezListeZadan()
     }
 
+    var selectedDate = ""
+
+    fun getDate(view: View) {
+        val context = view.context
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            context,
+            DatePickerDialog.OnDateSetListener { _, selectedYear, selectedMonth, selectedDay ->
+                selectedDate = "$selectedDay/${selectedMonth + 1}/$selectedYear"
+                (view as Button).text = selectedDate
+            },
+            year,
+            month,
+            day
+        )
+        datePickerDialog.show()
+    }
+
+
     fun addTest(view: View) {
         Log.d("dodajZadanie","ENTER")
         // Pobieramy opis zadania
-        var textEdit = findViewById<EditText>(R.id.TxtDate)
-        val date = textEdit.text.toString()
+        val date = selectedDate
 
-        textEdit = findViewById<EditText>(R.id.TxtClass)
+        var textEdit = findViewById<EditText>(R.id.TxtClass)
         val schoolClass = textEdit.text.toString()
 
         textEdit = findViewById<EditText>(R.id.TxtSubject)

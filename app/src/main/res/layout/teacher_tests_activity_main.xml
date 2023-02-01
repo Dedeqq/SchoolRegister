@@ -28,12 +28,12 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/TxtDate"
+                android:id="@+id/TxtSubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:text="Data"/>
+                android:text="Przedmiot"/>
 
             <EditText
                 android:id="@+id/TxtClass"
@@ -50,13 +50,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/TxtSubject"
-                android:layout_width="89dp"
+            <Button
+                android:id="@+id/buttonDate"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
-                android:text="Przedmiot"/>
+                android:onClick="getDate"
+                android:text="Data" />
 
             <Button
                 android:id="@+id/button2"
