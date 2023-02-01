@@ -37,8 +37,8 @@ class StudentMainActivity : AppCompatActivity() {
         startActivity(Intent(this, ScheduleActivity::class.java))
     }
 
-    fun onClickTests(v: View){
-        startActivity(Intent(this, TestsActivity::class.java))
+    fun onClickStudentTests(v: View){
+        startActivity(Intent(this, StudentTestsActivity::class.java))
     }
 
     fun onClickLogout(v: View) {

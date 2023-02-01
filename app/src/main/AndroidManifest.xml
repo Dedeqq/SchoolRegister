@@ -15,7 +15,10 @@
             android:name=".ScheduleActivity"
             android:exported="false" />
         <activity
-            android:name=".TestsActivity"
+            android:name=".StudentTestsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherTestsActivity"
             android:exported="false" />
         <activity
             android:name=".AddGradeActivity"

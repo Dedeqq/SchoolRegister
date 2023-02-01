@@ -19,6 +19,10 @@ class TeacherMainActivity : AppCompatActivity() {
        startActivity(Intent(Intent(this, AddGradeActivity::class.java) ))
     }
 
+    fun onClickTeacherTests(v: View){
+        startActivity(Intent(this, TeacherTestsActivity::class.java))
+    }
+
     fun onClickLogout(v: View) {
         MainActivity.gradesPolish.clear()
         MainActivity.gradesEnglish.clear()

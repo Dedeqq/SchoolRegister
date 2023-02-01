@@ -21,19 +21,19 @@ class ScheduleActivity : AppCompatActivity() {
         TabLayoutMediator(tabLayout,view_pager){tab,position->
             when(position){
                 0->{
-                    tab.text ="Monday"
+                    tab.text ="Pn"
                 }
                 1->{
-                    tab.text="Tuesday"
+                    tab.text="Wt"
                 }
                 2->{
-                    tab.text="Wednesday"
+                    tab.text="Śr"
                 }
                 3->{
-                    tab.text="Thursday"
+                    tab.text="Czw"
                 }
                 4->{
-                    tab.text="Friday"
+                    tab.text="Pt"
                 }
             }
         }.attach()
