@@ -30,18 +30,16 @@
             <EditText
                 android:id="@+id/TxtSubject"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Wydarzenie"/>
+                android:hint="Wydarzenie" />
 
-            <EditText
-                android:id="@+id/TxtClass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Klasa"/>
+            <Spinner
+                android:id="@+id/spinnerClassGrades"
+                android:layout_width="208dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
         </LinearLayout>
 

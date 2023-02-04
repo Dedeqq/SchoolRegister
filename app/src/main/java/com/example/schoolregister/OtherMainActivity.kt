@@ -1,5 +1,6 @@
 package com.example.schoolregister
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -17,6 +18,23 @@ class OtherMainActivity : AppCompatActivity() {
         setContentView(R.layout.other_activity_main)
         val greetings: TextView = findViewById(R.id.greetings)
         greetings.setText("Witaj "+MainActivity.firstName+" "+MainActivity.lastName+"!")
+    }
+
+    fun onClickOtherLogout(v: View){
+        MainActivity.gradesPolish.clear()
+        MainActivity.gradesEnglish.clear()
+        MainActivity.gradesMathematics.clear()
+        MainActivity.firstName = ""
+        MainActivity.lastName = ""
+        MainActivity.studentFirstName = ""
+        MainActivity.studentLastName = ""
+        MainActivity.username = ""
+        MainActivity.password = ""
+        MainActivity.session = ""
+        MainActivity.role = ""
+        MainActivity.loggedin = false
+
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     fun onClickA(v: View) {

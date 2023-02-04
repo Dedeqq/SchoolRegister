@@ -103,6 +103,7 @@
             android:layout_width="118dp"
             android:layout_height="106dp"
             android:text="@string/log_out"
+            android:onClick="onClickOtherLogout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.921"

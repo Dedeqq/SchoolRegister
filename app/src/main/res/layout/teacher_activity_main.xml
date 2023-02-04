@@ -79,7 +79,7 @@
             android:id="@+id/buttonTeacher4"
             android:layout_width="118dp"
             android:layout_height="106dp"
-            android:text="DODAJ OBECNOŚĆ"
+            android:text="ZMIEŃ OBECNOŚĆ"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.917"

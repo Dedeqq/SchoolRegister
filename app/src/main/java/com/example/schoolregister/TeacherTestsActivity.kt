@@ -1,13 +1,12 @@
 package com.example.schoolregister
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ListView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.Response
@@ -24,10 +23,29 @@ class TeacherTestsActivity : AppCompatActivity(),
 
     private val tests = mutableListOf<TeacherTest>()
     private lateinit var adapter : TeacherTestsAdapter
+    var schoolClass = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.teacher_tests_activity_main)
+
+        val classes = arrayOf("WYBIERZ KLASĘ:", "1A", "1B")
+        val spinnerClass = findViewById<Spinner>(R.id.spinnerClassGrades)
+        val arrayAdapterClass = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, classes)
+        spinnerClass.adapter = arrayAdapterClass
+        spinnerClass.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                schoolClass = classes[position].toString()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                MainActivity.role = classes[0]
+            }
+        }
 
         // Tworzymy nasz ZadaniaAdapter i wiążemy go z listView
         adapter = TeacherTestsAdapter(this, tests, this)
@@ -66,10 +84,10 @@ class TeacherTestsActivity : AppCompatActivity(),
         // Pobieramy opis zadania
         val date = selectedDate
 
-        var textEdit = findViewById<EditText>(R.id.TxtClass)
-        val schoolClass = textEdit.text.toString()
+        // var textEdit = findViewById<EditText>(R.id.TxtClass)
+        // val schoolClass = textEdit.text.toString()
 
-        textEdit = findViewById<EditText>(R.id.TxtSubject)
+        var textEdit = findViewById<EditText>(R.id.TxtSubject)
         val subject = textEdit.text.toString()
 
         // Konstruujemy zapytanie do bazy danych
