@@ -12,7 +12,7 @@ class TeacherMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.teacher_activity_main)
         val greetings: TextView = findViewById(R.id.greetings)
-        greetings.setText("WITAJ "+MainActivity.firstName+" "+MainActivity.lastName+"!")
+        greetings.setText("Witaj "+MainActivity.firstName+" "+MainActivity.lastName+"!")
     }
 
     fun onClickB(v: View) {

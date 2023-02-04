@@ -18,11 +18,38 @@ class ParentMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.parent_activity_main)
         val greetings: TextView = findViewById(R.id.greetings)
-        greetings.setText("WITAJ "+MainActivity.firstName+" "+MainActivity.lastName+"!")
+        greetings.setText("Witaj "+MainActivity.firstName+" "+MainActivity.lastName+"!")
     }
 
-    fun onClickB(v: View) {
-        MainActivity.studentFirstName = MainActivity.firstName
+    fun onClickScheduleParent(v: View){
+        startActivity(Intent(this, ScheduleActivity::class.java))
+    }
+
+    fun onClickTestsParent(v: View){
+        startActivity(Intent(this, StudentTestsActivity::class.java))
+    }
+
+    fun onClickLogoutParent(v: View) {
+        MainActivity.gradesPolish.clear()
+        MainActivity.gradesEnglish.clear()
+        MainActivity.gradesMathematics.clear()
+        MainActivity.firstName = ""
+        MainActivity.lastName = ""
+        MainActivity.studentFirstName = ""
+        MainActivity.studentLastName = ""
+        MainActivity.username = ""
+        MainActivity.password = ""
+        MainActivity.session = ""
+        MainActivity.role = ""
+        MainActivity.loggedin = false
+
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
+    fun onClickGradesParent(v: View) {
+        println("ok")
+        if (MainActivity.lastName == "Kapusta") MainActivity.studentFirstName = "Mateusz"
+        if (MainActivity.lastName == "Kogut") MainActivity.studentFirstName = "Jan"
         MainActivity.studentLastName = MainActivity.lastName
         getGradesInfo()
 
@@ -30,20 +57,15 @@ class ParentMainActivity : AppCompatActivity() {
 
     fun getGradesInfo(){
         val url = "http://10.0.2.2/androiddb/"
-
-        val query = "SELECT students.*, grades.*, subjects.* FROM grades \n"+
-                "RIGHT JOIN students on students.id = grades.student_id \n"+
-                "LEFT JOIN subjects on grades.subject_id = subjects.id \n"+
-                "WHERE students.firstname = \""+MainActivity.studentFirstName+
-                "\" AND students.lastname = \""+MainActivity.studentLastName+"\""
-
+        val query = "SELECT students.*, grades.*, subjects.* FROM grades RIGHT JOIN students on students.id = grades.student_id LEFT JOIN subjects on grades.subject_id = subjects.id WHERE students.firstname = \""+MainActivity.studentFirstName +"\" AND students.lastname = \""+MainActivity.studentLastName+"\""
 
         // Post parameters
-        val jsonObject = JSONObject()
+        var jsonObject = JSONObject()
         jsonObject.put("username",MainActivity.username)
         jsonObject.put("password",MainActivity.password)
         jsonObject.put("email","")
         jsonObject.put("query",query)
+        println(query)
 
         val requestPOST = JsonObjectRequest(Request.Method.POST,url,jsonObject,
             Response.Listener { response ->

@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:text="Przedmiot"/>
+                android:hint="Wydarzenie"/>
 
             <EditText
                 android:id="@+id/TxtClass"
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:text="Klasa"/>
+                android:hint="Klasa"/>
 
         </LinearLayout>
 

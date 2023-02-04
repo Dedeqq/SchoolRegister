@@ -16,7 +16,7 @@ class OtherMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.other_activity_main)
         val greetings: TextView = findViewById(R.id.greetings)
-        greetings.setText("WITAJ "+MainActivity.firstName+" "+MainActivity.lastName+"!")
+        greetings.setText("Witaj "+MainActivity.firstName+" "+MainActivity.lastName+"!")
     }
 
     fun onClickA(v: View) {

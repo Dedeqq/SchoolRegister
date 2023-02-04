@@ -19,6 +19,7 @@ class AddGradeActivity : AppCompatActivity(){
     var chosenStudent = ""
     var chosenGrade = ""
     var chosenWeight = ""
+    var chosenDescription = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_grade_activity)
@@ -41,7 +42,7 @@ class AddGradeActivity : AppCompatActivity(){
             }
         }
 
-        val classes = arrayOf("WYBIERZ KLASĘ:", "1A", "1B", "2A", "2B")
+        val classes = arrayOf("WYBIERZ KLASĘ:", "1A", "1B")
         val spinnerClass = findViewById<Spinner>(R.id.spinnerClass)
         val arrayAdapterClass = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, classes)
         spinnerClass.adapter = arrayAdapterClass
@@ -59,7 +60,7 @@ class AddGradeActivity : AppCompatActivity(){
             }
         }
 
-        val students = arrayOf("WYBIERZ UCZNIA:", "UCZEN1_IMIE UCZEN1_NAZWISKO", "UCZEN2_IMIE UCZEN2_NAZWISKO", "UCZEN3_IMIE UCZEN3_NAZWISKO")
+        val students = arrayOf("WYBIERZ UCZNIA:", "Kapusta Mateusz", "Kogut Jan")
         val spinnerStudent = findViewById<Spinner>(R.id.spinnerStudent)
         val arrayAdapterStudent = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, students)
         spinnerStudent.adapter = arrayAdapterStudent
@@ -77,7 +78,7 @@ class AddGradeActivity : AppCompatActivity(){
             }
         }
 
-        val grades = arrayOf("WYBIERZ OCENĘ:", "5", "4", "3")
+        val grades = arrayOf("WYBIERZ OCENĘ:", "6", "6-", "5+", "5", "5-", "4+", "4", "4-", "3+", "3", "3-", "2+", "2", "2-", "1+", "1")
         val spinnerGrade = findViewById<Spinner>(R.id.spinnerGrade)
         val arrayAdapterGrade = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, grades)
         spinnerGrade.adapter = arrayAdapterGrade
@@ -95,7 +96,7 @@ class AddGradeActivity : AppCompatActivity(){
             }
         }
 
-        val weights = arrayOf("WYBIERZ WAGĘ OCENY:", "1", "2", "3")
+        val weights = arrayOf("WYBIERZ WAGĘ OCENY:", "1", "2", "3", "4", "5")
         val spinnerWeight = findViewById<Spinner>(R.id.spinnerWeight)
         val arrayAdapterWeight = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, weights)
         spinnerWeight.adapter = arrayAdapterWeight
@@ -115,7 +116,7 @@ class AddGradeActivity : AppCompatActivity(){
     }
 
     fun onClickAdd(v: View){
-        val description = findViewById<EditText>(R.id.descriptionText).text.toString()
+        chosenDescription = findViewById<EditText>(R.id.descriptionText).text.toString()
         addGrade()
     }
 
@@ -131,10 +132,16 @@ class AddGradeActivity : AppCompatActivity(){
 
     fun addGrade(){
         val url = "http://10.0.2.2/androiddb/"
+        var subjectId = ""
+        if (chosenSubject == "MATEMATYKA") subjectId = "1"
+        if (chosenSubject == "JĘZYK POLSKI") subjectId = "2"
+        if (chosenSubject == "JĘZYK ANGIELSKI") subjectId = "3"
 
+        var studentId = ""
+        if (chosenStudent == "Kapusta Mateusz") studentId = "1"
+        if (chosenStudent == "Kogut Jan") studentId = "2"
         // id grade grade_value weight student_id teacher_id subject_id description
-        val query = "INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description)\t\n" +
-                "\tVALUES (\"4+\", 4.5, 2, 2, 2, 2, \"6666\");"
+        val query = "INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_id, description) VALUES (\""+chosenGrade+"\", 1, "+chosenWeight+", "+studentId+", 2, "+subjectId+", \""+chosenDescription+"\");"
 
 
 
@@ -142,8 +149,9 @@ class AddGradeActivity : AppCompatActivity(){
         val jsonObject = JSONObject()
         jsonObject.put("username",MainActivity.username)
         jsonObject.put("password",MainActivity.password)
-        jsonObject.put("email","email")
+        jsonObject.put("email","")
         jsonObject.put("query",query)
+        print(query)
 
 
         // Volley post request with parameters

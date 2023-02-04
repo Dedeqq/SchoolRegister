@@ -51,43 +51,49 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun onClickResetPassword(v: View){
+        startActivity(Intent(this, PasswordActivity::class.java))
+    }
+
     fun onClickLogin(v: View) {
         val  user = findViewById<EditText>(R.id.loginUserEditText).text.toString()
         val  password = findViewById<EditText>(R.id.loginPasswordEditText).text.toString()
-
         val url = "http://10.0.2.2/androiddb/"
 
-        getPersonalInfo(user,password,url)
+        if (user[0] != MainActivity.role.toString().toLowerCase()[0]) {
+            Toast.makeText(this, "Niepoprawne dane", Toast.LENGTH_LONG).show()
+        } else{
+            getPersonalInfo(user,password,url)
 
-        // Post parameters
-        val jsonObject = JSONObject()
-        jsonObject.put("username",user)
-        jsonObject.put("password",password)
-        jsonObject.put("email","")
-        jsonObject.put("query","")
+            // Post parameters
+            val jsonObject = JSONObject()
+            jsonObject.put("username",user)
+            jsonObject.put("password",password)
+            jsonObject.put("email","")
+            jsonObject.put("query","")
 
 
-        // Volley post request with parameters
-        val requestPOST = JsonObjectRequest(Request.Method.POST,url,jsonObject,
-            Response.Listener { response ->
-                // Process the json
-                try {
-                    processResponse(response)
-                    Log.d("fun onClickLogin:","Response: $response")
-                }catch (e:Exception){
-                    Log.d("fun onClickLogin:","Exception: $e")
-                }
+            // Volley post request with parameters
+            val requestPOST = JsonObjectRequest(Request.Method.POST,url,jsonObject,
+                Response.Listener { response ->
+                    // Process the json
+                    try {
+                        processResponse(response)
+                        Log.d("fun onClickLogin:","Response: $response")
+                    }catch (e:Exception){
+                        Log.d("fun onClickLogin:","Exception: $e")
+                    }
 
-            }, Response.ErrorListener{
-                // Error in request
-                Log.d("fun onClickLogin:","Volley error: $it")
-            })
-        // zapamietajmy uzytegko usera i haslo - na wypadek gdyby udalo sie zalogowac
-        MainActivity.username = user
-        MainActivity.password = password
+                }, Response.ErrorListener{
+                    // Error in request
+                    Log.d("fun onClickLogin:","Volley error: $it")
+                })
+            // zapamietajmy uzytegko usera i haslo - na wypadek gdyby udalo sie zalogowac
+            MainActivity.username = user
+            MainActivity.password = password
 
-        VolleySingleton.getInstance(this).addToRequestQueue(requestPOST)
-
+            VolleySingleton.getInstance(this).addToRequestQueue(requestPOST)
+        }
     }
 
     fun processResponse(response: JSONObject) {
@@ -108,7 +114,7 @@ class MainActivity : AppCompatActivity() {
             MainActivity.session = ""
             MainActivity.username = ""
             MainActivity.password =""
-            Toast.makeText(this, response["message"].toString(), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Niepoprawne dane", Toast.LENGTH_LONG).show()
         }
 
     }
