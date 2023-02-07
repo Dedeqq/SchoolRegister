@@ -190,6 +190,3 @@ INSERT INTO grades (grade, grade_value, weight, student_id, teacher_id, subject_
 
 
 
-
-
-
